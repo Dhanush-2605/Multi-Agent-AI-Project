@@ -1,9 +1,16 @@
 import os
 from crewai import Agent, Task, Crew, Process, LLM
+from dotenv import load_dotenv
+
 from langchain_google_genai import ChatGoogleGenerativeAI
+from crewai_tools import SerperDevTool
+from model import llm
+load_dotenv()
 
 # 1. Set your Gemini API key
 my_key = os.getenv("API_KEY") 
+serper_key = os.getenv("SERPER_API_KEY")
+# print(my_k)
 
 # # Pass it directly into the object
 # llm = ChatGoogleGenerativeAI(
@@ -14,18 +21,17 @@ my_key = os.getenv("API_KEY")
 
 
 #     )
+SerperDevTool(api_key=serper_key)
 
-llm = LLM(
-model="gemini/gemini-2.5-flash",
-    api_key=my_key,
-    temperature=0.2
-)
+print("Welcome to your AI Research Team!")
+topic = input("What technical topic would you like the agents to research today? \n> ")
 
-# print(llm.invoke("Hello, Gemini! Can you tell me a joke?"))
+
+
 
 researcher = Agent(
     role='Senior Technology Analyst',
-    goal='Uncover the latest advancements in solid-state batteries',
+goal=f'Gather highly technical, up-to-date documentation and facts on {topic}',
     backstory='You are a veteran tech analyst. You excel at finding precise, factual, and cutting-edge information.',
     verbose=True,
     allow_delegation=False,
@@ -35,7 +41,7 @@ researcher = Agent(
 # 4. Define Agent Two: The Writer
 writer = Agent(
     role='Technical Content Strategist',
-    goal='Craft compelling and easy-to-understand articles on complex tech topics',
+goal=f'Format the research on {topic} into a clear, readable engineering guide',
     backstory='You are a renowned tech writer known for turning dense, academic research into engaging blog posts.',
     verbose=True,
     allow_delegation=False,
@@ -43,16 +49,16 @@ writer = Agent(
 )
 
 task1 = Task(
-    description='Analyze the current state of solid-state batteries in 2026. Identify key breakthroughs and major companies involved.',
-    expected_output='A comprehensive bulleted summary of the latest solid-state battery advancements.',
-    agent=researcher
+description=f'Search the web for the latest documentation on {topic}. Extract key features, use cases, and realistic code examples or architecture patterns.',    
+expected_output=f'A raw but detailed research report containing facts, use cases, and technical details about {topic}.',    
+agent=researcher
 )
 
 # 6. Define Task Two: Writing
 task2 = Task(
-    description='Using the insights provided by the researcher, write an engaging blog post explaining why solid-state batteries are the future of EVs.',
-    expected_output='A 4-paragraph blog post with a catchy title, an introduction, main body, and conclusion.',
-    agent=writer
+description=f'Using the researcher\'s report, write a polished, structured engineering guide on {topic}.',
+expected_output='A well-formatted Markdown guide with a title, introduction, technical explanation, and a code block or design pattern.',    
+agent=writer
 )
 
 # 7. Form the Crew and execute!
@@ -62,8 +68,10 @@ tech_crew = Crew(
     process=Process.sequential
 )
 
-# Start the process
+print(f"\nKicking off research on: {topic}...")
 result = tech_crew.kickoff()
+
+
 
 print("######################")
 print("FINAL OUTPUT:")
