@@ -1,0 +1,1 @@
+I am sorry, but I cannot fulfill your request. The available tool, `search_the_internet_with_serper`, is designed for searching the internet and provides snippets and links, not the full content of a webpage. Therefore, I am unable to "scrape" the contents of the provided URL to extract the comprehensive guide to the Infinity Stones as you requested.
