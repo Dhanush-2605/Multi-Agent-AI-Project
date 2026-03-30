@@ -1,36 +1,30 @@
-# TVA Pruning Report
+**TVA Pruning Report**
 
-**Subject:** Fan Theory Analysis - Iron Man & Time Stone Survival
-**Case ID:** FTA-IM-TS-001
-**Analyst:** TVA Senior Analyst & Judge
-**Date:** 2024-02-20
-
----
-
+**Case ID:** TVA-PR-2023-IM-TS001
 **Theory Under Review:** "What if Iron Man used the Time Stone to survive the snap in 2023?"
 
-**Canon Facts Referenced:**
-*   Iron Man died in 2023.
-*   The Time Stone is housed in the Eye of Agamotto.
-*   Careless use of the Time Stone creates temporal paradoxes.
-*   Iron Man (died_in: 2023)
-
----
+**Relevant Canon Events/Facts:**
+*   Iron Man died using the Nano Gauntlet in 2023. (Source: *Avengers: Endgame*)
+*   The Time Stone was retrieved from 2012 and placed into the Nano Gauntlet for the final snap in 2023. (Source: *Avengers: Endgame*)
+*   Doctor Strange viewed millions of possible futures and identified only one path to victory, which necessitated Iron Man's sacrifice. (Source: *Avengers: Infinity War*, *Avengers: Endgame*)
+*   The act of wielding all six Infinity Stones simultaneously, even briefly, generates an immense power surge that is lethal to most beings, as demonstrated by Hulk's injury and Thanos's demise. (Source: *Avengers: Endgame*)
 
 **Analysis:**
+The theory posits that Tony Stark, while wielding the Nano Gauntlet containing the Time Stone, could have utilized the Time Stone's power to survive the lethal snap he performed in 2023.
 
-This theory posits a significant deviation from the established Sacred Timeline. Let us examine its components against the verified facts:
+1.  **Direct Contradiction of Death:** The most fundamental conflict is that canon explicitly states Iron Man *died* as a direct consequence of wielding the Nano Gauntlet and performing the snap. The theory suggests he *survived*. These two outcomes are mutually exclusive.
+2.  **Purpose of the Snap vs. Individual Stone Use:** While Tony Stark did wield the Time Stone as part of the Nano Gauntlet, its primary function in that moment was to contribute to the collective power of all six Stones to eliminate Thanos and his army. There is no indication that an individual Stone's power could be selectively and simultaneously deployed for self-preservation *during* the universal snap, especially given the overwhelming energy discharge.
+3.  **Doctor Strange's Foreknowledge:** Doctor Strange, having seen millions of potential futures, explicitly indicated that there was only "one" way to win, and that path involved Tony Stark's sacrifice. If using the Time Stone to survive was a viable option, Strange would have either seen it as part of the winning future or guided Tony towards it. His singular gesture ("one") strongly implies that Tony's survival was not an option within the winning timeline.
+4.  **Lethality of the Stones:** The power of all six Infinity Stones is immense and inherently destructive to the wielder. The snap itself was the cause of Tony's death. Attempting to use one of the Stones to negate the effect of *all six* simultaneously, while performing their intended function, presents a logical impossibility within the established rules of the MCU.
 
-1.  **Contradiction of Established Death:** The primary and most glaring issue is the direct contradiction of Iron Man's fate. Canon dictates that Iron Man (Tony Stark) died in 2023 as a direct consequence of wielding the Infinity Gauntlet to perform the "snap" that defeated Thanos. The theory suggests he *survived*. This is a fundamental divergence from a nexus event that solidified the timeline's progression.
+**Paradoxes/Inconsistencies:**
+*   The theory directly contradicts the established canon fact of Iron Man's death.
+*   It undermines the narrative significance of Doctor Strange's vision and Tony Stark's ultimate sacrifice.
+*   It implies a selective control over individual Infinity Stones during a full gauntlet snap that is not supported by canon.
 
-2.  **Availability of the Time Stone:** In 2023, during the final confrontation with Thanos, the Time Stone was present, having been retrieved from 2012 by Captain America. However, after its use in reversing Thanos's snap, Captain America was tasked with returning all Infinity Stones to their original points in time. This means the Time Stone would have been returned to the Ancient One in 2012, rendering it unavailable to Iron Man in 2023 *after* he had performed his fatal snap. There would be no opportunity for him to access or utilize it for self-preservation at the critical moment of his demise.
+**Verdict:** ANOMALY
 
-3.  **Temporal Paradox and Nexus Event:** Iron Man's sacrifice was a pivotal nexus event, ensuring the defeat of Thanos and the restoration of half of all life in the universe. If he were to use the Time Stone to survive, it would prevent this sacrifice. Such an action would not merely be "careless use" resulting in minor paradoxes; it would fundamentally alter the outcome of the entire conflict, potentially leading to Thanos's victory, or at the very least, an entirely different and unstable future. The Sacred Timeline hinges on this specific outcome. Preventing Iron Man's death would unravel countless subsequent events and create a catastrophic temporal paradox of unimaginable scale.
+**Reasoning for Verdict:**
+This theory creates a direct and irreconcilable paradox with the Sacred Timeline's established events. Iron Man's death is a fixed point, a pivotal moment that defines the conclusion of the Infinity Saga. The suggestion that he could have used the Time Stone to survive fundamentally alters this outcome, negates his sacrifice, and contradicts Doctor Strange's foreknowledge of the "one" winning future. Such an event would constitute a severe deviation from the Sacred Timeline.
 
----
-
-**Verdict:** **ANOMALY**
-
-**Justification:**
-
-This theory is a clear and undeniable **Anomaly**. It directly contradicts the established death of Iron Man in 2023, a critical nexus event in the Sacred Timeline. Furthermore, it relies on the impossible premise of Iron Man having access to the Time Stone at the precise moment of his death, when it would have already been returned to its original temporal location. The proposed action of using the Time Stone for self-preservation would prevent a pivotal sacrifice, thereby creating an unmanageable temporal paradox that would destabilize and unravel the Sacred Timeline. Such a branch cannot be allowed to exist.
+**Analyst/Judge:** Senior Analyst & Judge J. Renslayer

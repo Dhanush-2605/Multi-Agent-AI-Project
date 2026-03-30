@@ -1,0 +1,42 @@
+{
+    "directed": true,
+    "multigraph": false,
+    "graph": {},
+    "nodes": [
+        {
+            "id": "Thanos"
+        },
+        {
+            "id": "Gamora"
+        },
+        {
+            "id": "Time Stone"
+        },
+        {
+            "id": "Eye of Agamotto"
+        },
+        {
+            "id": "Iron Man"
+        },
+        {
+            "id": "Nano Gauntlet"
+        }
+    ],
+    "links": [
+        {
+            "relation": "sacrificed on Vormir",
+            "source": "Thanos",
+            "target": "Gamora"
+        },
+        {
+            "relation": "housed in",
+            "source": "Time Stone",
+            "target": "Eye of Agamotto"
+        },
+        {
+            "relation": "died_using",
+            "source": "Iron Man",
+            "target": "Nano Gauntlet"
+        }
+    ]
+}
