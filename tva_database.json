@@ -16,10 +16,16 @@
             "id": "Eye of Agamotto"
         },
         {
-            "id": "Iron Man"
+            "id": "Thor"
         },
         {
-            "id": "Nano Gauntlet"
+            "id": "Asgardian God of Thunder"
+        },
+        {
+            "id": "Wakanda"
+        },
+        {
+            "id": "country located in Africa"
         }
     ],
     "links": [
@@ -34,9 +40,14 @@
             "target": "Eye of Agamotto"
         },
         {
-            "relation": "died_using",
-            "source": "Iron Man",
-            "target": "Nano Gauntlet"
+            "relation": "is_the",
+            "source": "Thor",
+            "target": "Asgardian God of Thunder"
+        },
+        {
+            "relation": "is_a",
+            "source": "Wakanda",
+            "target": "country located in Africa"
         }
     ]
 }

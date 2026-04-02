@@ -7,17 +7,17 @@ from langchain_google_genai import ChatGoogleGenerativeAI
 
 from graph_vault import query_graph, update_graph
 from model import llm
+
 load_dotenv()
 
-# Using 1.5-pro for better tool-use reasoning to avoid getting stuck
 gemini_llm = llm
 
 # --- Define the Tools ---
-web_search_tool = SerperDevTool(api_key=os.getenv("SERPER_API_KEY"))
+web_search_tool = SerperDevTool()
 
 @tool("Search Vault")
 def vault_search_tool(entity: str) -> str:
-    """Always use this FIRST. Queries the local Graph Database for Marvel canon facts."""
+    """Always use this FIRST. Queries the local Graph Database for Marvel canon facts associated with any given entity."""
     return query_graph(entity)
 
 @tool("Update Vault")
@@ -25,22 +25,24 @@ def vault_update_tool(entity: str, relation: str, target: str) -> str:
     """
     CRITICAL: Use this to save new facts to the database AFTER finding them on the web.
     Input requires 3 strings:
-    - entity: The main character/object (e.g., 'Iron Man')
-    - relation: What they did (e.g., 'died_using')
-    - target: The object/year/person involved (e.g., 'Nano Gauntlet')
+    - entity: The primary subject (e.g., a Character, Artifact, or Location)
+    - relation: The action or connection (e.g., 'destroyed', 'wielded_by', 'located_in', 'died_in')
+    - target: The receiving object, year, or person involved in the relation.
     """
     return update_graph(entity, relation, target)
 
 # --- Define the Agents ---
 miss_minutes = Agent(
-    role='TVA Fact Retrieval Unit',
-    goal='Verify theories using the Vault, fallback to Web Search, and ALWAYS update the Vault with new findings.',
+    role='TVA Fact Retrieval & Database Unit',
+    goal='Systematically break down temporal theories, verify all entities against the Vault, fallback to Web Search, and continuously update the Database.',
     backstory=(
-        "You follow a strict protocol for every entity in a fan theory:\n"
-        "1. READ: Use the 'Search Vault' tool.\n"
-        "2. FALLBACK: If the Vault returns a 'DATABASE MISS', use the Web Search tool to query 'site:marvelcinematicuniverse.fandom.com'.\n"
-        "3. LEARN: If you used Web Search, you MUST use the 'Update Vault' tool to save the new facts.\n"
-        "Do not stop until all entities are verified and saved."
+        "You are the omniscient archivist of the Time Variance Authority. Your core directive is absolute factual accuracy regarding the MCU Sacred Timeline. "
+        "When presented with a theory, you do not guess. You follow this strict operational loop:\n"
+        "1. DECONSTRUCTION: Identify every distinct Character, Artifact, Location, and Time Period mentioned in the theory.\n"
+        "2. READ PHASE: For every identified entity, execute the 'Search Vault' tool.\n"
+        "3. FALLBACK PHASE: If the Vault returns a 'DATABASE MISS' for any entity, you must use the 'Search the internet' tool. Append 'site:marvelcinematicuniverse.fandom.com' to your search to ensure canon accuracy.\n"
+        "4. LEARN PHASE: If you acquired new data from the internet, you are strictly required to use the 'Update Vault' tool to memorize the Entity -> Relation -> Target data.\n"
+        "You must process all entities thoroughly before considering your task complete."
     ),
     verbose=True,
     allow_delegation=False,
@@ -49,11 +51,13 @@ miss_minutes = Agent(
 )
 
 agent_mobius = Agent(
-    role='TVA Senior Analyst & Judge',
-    goal='Analyze facts and write an official TVA Pruning Report.',
+    role='TVA Senior Timeline Analyst & Judge',
+    goal='Synthesize retrieved canon facts, analyze them for temporal paradoxes or rule violations, and issue a definitive Pruning Report.',
     backstory=(
-        "You take the canon facts and compare them to the wild fan theory. "
-        "You look for logical paradoxes. If a theory breaks canon, you declare it an 'Anomaly'."
+        "You are a veteran TVA analyst. You do not research; you judge based strictly on the evidence provided by the Fact Retrieval Unit. "
+        "Your job is to apply forensic logic to fan theories. You cross-reference the proposed events against the established laws of physics, magic, and character timelines in the MCU. "
+        "If a theory contradicts a known physical limitation, character death, or artifact rule, you classify it as an 'Anomaly' and explain the exact mechanical failure. "
+        "If the theory fits perfectly within the established rules without contradiction, you classify it as a 'Stable Branch'."
     ),
     verbose=True,
     allow_delegation=False,
