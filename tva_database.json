@@ -26,6 +26,39 @@
         },
         {
             "id": "country located in Africa"
+        },
+        {
+            "id": "Infinity Gauntlet"
+        },
+        {
+            "id": "Dwarven-made Uru glove"
+        },
+        {
+            "id": "Battle of Wakanda"
+        },
+        {
+            "id": "Wakandan forces, Avengers, and Outriders led by Black Order and Thanos"
+        },
+        {
+            "id": "Nano Gauntlet"
+        },
+        {
+            "id": "Infinity Stones"
+        },
+        {
+            "id": "beings_of_immense_power"
+        },
+        {
+            "id": "Steve Rogers"
+        },
+        {
+            "id": "1940s"
+        },
+        {
+            "id": "Peggy Carter"
+        },
+        {
+            "id": "Wakanda battle"
         }
     ],
     "links": [
@@ -33,6 +66,11 @@
             "relation": "sacrificed on Vormir",
             "source": "Thanos",
             "target": "Gamora"
+        },
+        {
+            "relation": "fought_in",
+            "source": "Thanos",
+            "target": "Wakanda battle"
         },
         {
             "relation": "housed in",
@@ -45,9 +83,46 @@
             "target": "Asgardian God of Thunder"
         },
         {
+            "relation": "deemed_unfit_to_wield",
+            "source": "Thor",
+            "target": "Nano Gauntlet"
+        },
+        {
+            "relation": "fought_in",
+            "source": "Thor",
+            "target": "Wakanda battle"
+        },
+        {
             "relation": "is_a",
             "source": "Wakanda",
             "target": "country located in Africa"
+        },
+        {
+            "relation": "is_a",
+            "source": "Infinity Gauntlet",
+            "target": "Dwarven-made Uru glove"
+        },
+        {
+            "relation": "was_an_engagement_between",
+            "source": "Battle of Wakanda",
+            "target": "Wakandan forces, Avengers, and Outriders led by Black Order and Thanos"
+        },
+        {
+            "relation": "can_only_be_wielded_by",
+            "source": "Infinity Stones",
+            "target": "beings_of_immense_power"
+        },
+        {
+            "relation": "stayed_in",
+            "source": "Steve Rogers",
+            "target": "1940s"
+        },
+        {
+            "relation": "involved_with",
+            "source": "Peggy Carter",
+            "target": "Steve Rogers"
         }
     ]
+
+    
 }

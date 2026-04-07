@@ -50,6 +50,22 @@ miss_minutes = Agent(
     llm=gemini_llm
 )
 
+ouroboros = Agent(
+    role='Temporal Branch Simulator (O.B.)',
+    goal='Calculate the Butterfly Effect of a timeline divergence by identifying major future MCU events that would be erased or altered.',
+    backstory=(
+        "You are O.B., the TVA's chief engineer of the Temporal Loom. You specialize in cause-and-effect. "
+        "When a timeline diverges, you do not look at the immediate moment; you look at the ripples. "
+        "Your job is to ask: 'If this new event happens, what canonical events in the future are now impossible?' "
+        "You use your web search tool to look up the canonical MCU timeline and trace the downstream casualties. "
+        "For example, if someone dies early, you must list the future battles they miss. If a villain is defeated early, you must list the future movies that are now erased."
+    ),
+    verbose=True,
+    allow_delegation=False,
+    tools=[web_search_tool], # O.B. needs Google to check the future timeline
+    llm=gemini_llm 
+)
+
 agent_mobius = Agent(
     role='TVA Senior Timeline Analyst & Judge',
     goal='Synthesize retrieved canon facts, analyze them for temporal paradoxes or rule violations, and issue a definitive Pruning Report.',

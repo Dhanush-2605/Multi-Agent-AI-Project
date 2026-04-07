@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>TVA Temporal Loom</title>
+    <style>
+        body { background-color: #0b0f19; color: #00ff00; font-family: monospace; text-align: center; margin: 0; padding: 20px; }
+        h1 { color: #ffcc00; text-shadow: 0 0 10px #ffcc00, 0 0 20px #ff9900; letter-spacing: 2px;}
+        
+        /* The Monitor Screen */
+        #loom-container { position: relative; width: 80%; height: 300px; margin: 40px auto; background: #000; border: 2px solid #333; overflow: hidden; border-radius: 10px; box-shadow: inset 0 0 20px #000; }
+        
+        /* Very subtle CSS wave animation (slow vertical hum) */
+        @keyframes gentleHum {
+            0% { transform: translateY(-50%); }
+            50% { transform: translateY(-52%); }
+            100% { transform: translateY(-50%); }
+        }
+
+        /* The Sacred Timeline */
+        .sacred-timeline {
+            position: absolute; top: 50%; left: 0; width: 100%; height: 6px;
+            background: #fff; box-shadow: 0 0 15px #fff, 0 0 30px #88ccff;
+            animation: gentleHum 4s infinite ease-in-out; /* Subtle waving */
+        }
+
+        /* The Red Branch */
+        .branch {
+            position: absolute; top: 50%; left: 40%; width: 0; height: 5px;
+            background: #ff3333; box-shadow: 0 0 15px #ff0000, 0 0 30px #ff0000;
+            transform-origin: left center; 
+            transform: translateY(-50%) rotate(-15deg);
+            /* Slow 5-second growth, and slow 4-second pruning */
+            transition: width 5s ease-in-out; 
+        }
+        
+        .branch.active { width: 50%; } /* Triggers the 5s growth */
+        .branch.pruning { width: 0; transition: width 4s ease-in-out; } /* Triggers the 4s erase */
+
+        /* UI Controls */
+        .controls { display: flex; justify-content: center; gap: 10px; margin-bottom: 20px; }
+        input { width: 50%; padding: 15px; background: #111; color: #ffcc00; border: 1px solid #ffcc00; font-family: monospace; font-size: 16px; }
+        
+        button { padding: 15px 30px; background: #ffcc00; color: #000; font-weight: bold; cursor: pointer; border: none; font-size: 16px; transition: 0.2s; }
+        button:hover { background: #ff9900; }
+        
+        /* Special Prune Button (Hidden by default) */
+        #prune-btn { background: #ff3333; color: white; display: none; }
+        #prune-btn:hover { background: #cc0000; }
+        
+        /* The Terminal Output Box */
+        #report-box { width: 80%; margin: 20px auto; text-align: left; background: #111; padding: 20px; border: 1px solid #333; min-height: 150px; white-space: pre-wrap; font-size: 14px; line-height: 1.5; overflow-y: auto; height: 200px; }
+        .pruned { color: #ff3333; font-weight: bold; text-shadow: 0 0 5px #ff0000;}
+        .stable { color: #00ff00; font-weight: bold; text-shadow: 0 0 5px #00ff00;}
+    </style>
+</head>
+<body>
+
+    <h1>🌌 TVA TEMPORAL LOOM MONITOR 🌌</h1>
+    
+    <div class="controls">
+        <input type="text" id="theory" placeholder="Enter theoretical nexus event (e.g., Thor aimed for the head...)">
+        <button id="sim-btn" onclick="simulateLoom()">SIMULATE BRANCH</button>
+        <button id="prune-btn" onclick="pruneTimeline()">PRUNE ANOMALY</button>
+    </div>
+
+    <!-- The Animation Canvas -->
+    <div id="loom-container">
+        <div class="sacred-timeline"></div>
+        <div class="branch" id="red-branch"></div>
+    </div>
+
+    <!-- Mobius's Report -->
+    <div id="report-box">Awaiting Temporal Data Input...</div>
+
+    <script>
+        async function simulateLoom() {
+            const theory = document.getElementById('theory').value;
+            const reportBox = document.getElementById('report-box');
+            const branch = document.getElementById('red-branch');
+            const pruneBtn = document.getElementById('prune-btn');
+            const simBtn = document.getElementById('sim-btn');
+
+            if (!theory) return;
+
+            // Reset UI for a new run
+            branch.classList.remove('active', 'pruning');
+            pruneBtn.style.display = 'none';
+            simBtn.disabled = true;
+            reportBox.innerHTML = "Initializing Agents...\n> Miss Minutes searching Vault...\n> O.B. simulating downstream casualties...\n> Mobius drafting judgment...";
+
+            try {
+                // Call the Flask Backend
+                const response = await fetch('/analyze', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ theory: theory })
+                });
+                
+                const data = await response.json();
+
+                // Check for Anomaly
+                const isAnomaly = data.report.toLowerCase().includes("anomaly") || data.report.toLowerCase().includes("prune");
+
+                if (isAnomaly) {
+                    branch.classList.add('active'); // Triggers the 5-second slow growth
+                    reportBox.innerHTML = "<span class='pruned'>🚨 CRITICAL ANOMALY DETECTED. RED LINE APPROACHING. 🚨</span>\n\n" + data.report;
+                    
+                    // Show the Prune button after the branch finishes growing (5 seconds)
+                    setTimeout(() => {
+                        pruneBtn.style.display = 'block';
+                    }, 5000);
+
+                } else {
+                    reportBox.innerHTML = "<span class='stable'>✅ STABLE BRANCH. NO VARIANTS DETECTED. ✅</span>\n\n" + data.report;
+                }
+            } catch (error) {
+                reportBox.innerHTML = "<span class='pruned'>SYSTEM ERROR: Temporal Loom disconnected.</span>";
+            } finally {
+                simBtn.disabled = false;
+            }
+        }
+
+        // Logic to slowly erase the branch
+        function pruneTimeline() {
+            const branch = document.getElementById('red-branch');
+            const pruneBtn = document.getElementById('prune-btn');
+            const reportBox = document.getElementById('report-box');
+
+            pruneBtn.style.display = 'none';
+            reportBox.innerHTML = "<span class='stable'>Resetting time charges... Pruning the timeline...</span>";
+            
+            // Remove the active class and add pruning to trigger the 4-second erase
+            branch.classList.remove('active');
+            branch.classList.add('pruning');
+
+            // Wait 4 seconds for the animation to finish, then update text
+            setTimeout(() => {
+                reportBox.innerHTML = "<span class='stable'>✅ BRANCH PRUNED. SACRED TIMELINE SECURE. ✅</span>\n\nAwaiting next input...";
+            }, 4000);
+        }
+    </script>
+</body>
+</html>

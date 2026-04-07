@@ -1,11 +1,12 @@
 from crewai import Crew, Process
-from agents import miss_minutes, agent_mobius
-from tasks import fact_check_task, judge_task
+from agents import miss_minutes, agent_mobius,ouroboros
+from tasks import fact_check_task, judge_task,simulate_branch_task
 
 tva_crew = Crew(
-    agents=[miss_minutes, agent_mobius],
-    tasks=[fact_check_task, judge_task],
+    agents=[miss_minutes, ouroboros, agent_mobius], # Add O.B. in the middle
+    tasks=[fact_check_task, simulate_branch_task, judge_task], # Add simulation in the middle
     process=Process.sequential,
+    max_rpm=10, 
     verbose=True
 )
 

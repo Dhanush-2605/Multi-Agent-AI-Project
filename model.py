@@ -10,10 +10,17 @@ load_dotenv()
 # 1. Set your Gemini API key
 my_key = os.getenv("API_KEY") 
 serper_key = os.getenv("SERPER_API_KEY")
+# llm = LLM(
+#     model="gemini/gemini-2.0-flash",  # ✅ correct
+#     api_key=os.getenv("API_KEY"),
+#     temperature=0.2,
+# )
 llm = LLM(
-    model="gemini/gemini-2.5-flash",  # ✅ correct
-    api_key=os.getenv("API_KEY"),
-    temperature=0.2,
+model="groq/llama-3.3-70b-versatile",
+# model="groq/compound",
+    temperature=0.1,
+    api_key=os.getenv("GROQ_API_KEY"),
+
 )
 
 
